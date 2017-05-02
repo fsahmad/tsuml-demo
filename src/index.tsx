@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
   createStore,
+  combineReducers,
   compose,
 } from 'redux';
 import * as ReactDOM from 'react-dom';
-import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 
