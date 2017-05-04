@@ -15,7 +15,9 @@ class App extends React.Component<{}, null> {
             <img src={logo} className="App-logo" alt="logo" />
             <h2>TypeScript UML Playground (Under Construction)</h2>
           </div>
-          <PlaygroundTabsContainer/>
+          <div className="App-body">
+            <PlaygroundTabsContainer />
+          </div>
         </div>
       </MuiThemeProvider>
     );
