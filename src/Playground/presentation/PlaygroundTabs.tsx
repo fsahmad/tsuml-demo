@@ -28,6 +28,7 @@ const styles = {
         flex: '1 1 auto',
         width: 'inherit',
         margin: '12px',
+        color: '#000',
     },
     tabItemContainer: {
         flex: '0 0 auto',
@@ -39,10 +40,22 @@ const PlaygroundTabs = (props: Props) => {
 
     switch (props.value) {
         case PlaygroundTabsValues.TAB_CODE:
-            content = <CodeEditor style={styles.content} />;
+            content = (
+                <CodeEditor
+                    style={styles.content}
+                    hintText={'Enter TypeScript here'}
+                    label={'TypeScript'}
+                    value={''} />
+            );
             break;
         case PlaygroundTabsValues.TAB_DIAGRAM_SOURCE:
-            content = <div>Diagram Source</div>;
+            content = (
+                <CodeEditor
+                    style={styles.content}
+                    label={'PlantUML'}
+                    readonly={true}
+                    value={'@startuml\n@enduml'} />
+            );
             break;
         case PlaygroundTabsValues.TAB_DIAGRAM_IMAGE:
             content = <div><img src="http://www.plantuml.com/plantuml/svg/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000" /></div>;
