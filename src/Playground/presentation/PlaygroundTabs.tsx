@@ -15,7 +15,11 @@ const PlaygroundTabsValues = {
 
 interface Props {
     value: any;
+    code: string;
+    diagramSource: string;
+    diagramImage: string;
     onChange: (value: any) => void;
+    onCodeChange: (value: any) => void;
 }
 
 const styles = {
@@ -25,10 +29,13 @@ const styles = {
         flexDirection: 'column' as 'column',
     },
     content: {
-        flex: '1 1 auto',
+        // flex: '1 1 auto',
         width: 'inherit',
         margin: '12px',
         color: '#000',
+    },
+    hidden: {
+        display: 'none',
     },
     tabItemContainer: {
         flex: '0 0 auto',
@@ -36,16 +43,17 @@ const styles = {
 };
 
 const PlaygroundTabs = (props: Props) => {
-    let content = null;
+    // let content = null;
 
-    switch (props.value) {
+    /*switch (props.value) {
         case PlaygroundTabsValues.TAB_CODE:
             content = (
                 <CodeEditor
                     style={styles.content}
                     hintText={'Enter TypeScript here'}
                     label={'TypeScript'}
-                    value={''} />
+                    value={props.code}
+                    onChange={(_, newValue) => { props.onCodeChange(newValue); }} />
             );
             break;
         case PlaygroundTabsValues.TAB_DIAGRAM_SOURCE:
@@ -54,15 +62,15 @@ const PlaygroundTabs = (props: Props) => {
                     style={styles.content}
                     label={'PlantUML'}
                     readonly={true}
-                    value={'@startuml\n@enduml'} />
+                    value={props.diagramSource} />
             );
             break;
         case PlaygroundTabsValues.TAB_DIAGRAM_IMAGE:
-            content = <div><img src="http://www.plantuml.com/plantuml/svg/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000" /></div>;
+            content = <div><img src={props.diagramImage} /></div>;
             break;
         default:
             break;
-    }
+    }*/
 
     return (
         <div style={styles.container}>
@@ -71,11 +79,27 @@ const PlaygroundTabs = (props: Props) => {
                 value={props.value}
                 onChange={props.onChange}
             >
-                <Tab icon={<ActionCode />} label="TypeScript" value={PlaygroundTabsValues.TAB_CODE} />
-                <Tab icon={<ActionSubject />} label="Diagram Source" value={PlaygroundTabsValues.TAB_DIAGRAM_SOURCE} />
-                <Tab icon={<ImageImage />} label="Diagram" value={PlaygroundTabsValues.TAB_DIAGRAM_IMAGE} />
+                <Tab icon={<ActionCode />} label="TypeScript" value={PlaygroundTabsValues.TAB_CODE}>
+                    <CodeEditor
+                        style={styles.content}
+                        hintText={'Enter TypeScript here'}
+                        label={'TypeScript'}
+                        value={props.code}
+                        onChange={(_, newValue) => { props.onCodeChange(newValue); }} />
+                </Tab>
+                <Tab icon={<ActionSubject />} label="Diagram Source" value={PlaygroundTabsValues.TAB_DIAGRAM_SOURCE}>
+                    <CodeEditor
+                        style={styles.content}
+                        label={'PlantUML'}
+                        readonly={true}
+                        value={props.diagramSource} />
+                </Tab>
+                <Tab icon={<ImageImage />} label="Diagram" value={PlaygroundTabsValues.TAB_DIAGRAM_IMAGE}>
+                    <div style={styles.content}>
+                        <img src={props.diagramImage} />
+                    </div>
+                </Tab>
             </Tabs>
-            {content}
         </div>
     );
 };

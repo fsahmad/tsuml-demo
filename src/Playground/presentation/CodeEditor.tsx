@@ -2,11 +2,14 @@ import * as React from 'react';
 import TextField from 'material-ui/TextField';
 
 interface Props {
+    rows?: number;
+    rowsMax?: number;
     style?: any;
     readonly?: boolean;
     value?: string;
     hintText?: string;
     label?: string;
+    onChange?: (event: object, newValue: string) => void;
 }
 
 const hintStyle = {
@@ -34,11 +37,14 @@ const CodeEditor: React.StatelessComponent<Props> = (props) => {
             floatingLabelFixed={true}
             multiLine={true}
             fullWidth={true}
+            rows={props.rows}
+            rowsMax={props.rowsMax}
             style={props.style}
             hintStyle={props.readonly ? styles.hintReadonly : styles.hint}
             textareaStyle={styles.textarea}
             disabled={props.readonly}
             value={props.value}
+            onChange={props.onChange}
         />
     );
 };
@@ -50,7 +56,8 @@ CodeEditor.defaultProps = {
     readonly: false,
     value: undefined,
     hintText: undefined,
-    label: undefined
+    label: undefined,
+    rows: 10,
 };
 
 export default CodeEditor;
