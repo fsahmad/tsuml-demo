@@ -16,7 +16,7 @@
     "react-redux": "^5.0.4",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
-    "typescript-uml": "^0.3.0-alpha.3"
+    "typescript-uml": "^0.3.0-alpha.4"
   },
   "devDependencies": {
     "@types/material-ui": "^0.17.4",
