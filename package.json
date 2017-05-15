@@ -27,7 +27,8 @@
     "react-scripts-ts": "1.4.0",
     "style-loader": "^0.17.0",
     "url-loader": "^0.5.8",
-    "tslint-react": "^3.0.0"
+    "tslint-react": "^3.0.0",
+    "source-map-support": "0.4.3"
   },
   "scripts": {
     "start": "react-scripts-ts start",
