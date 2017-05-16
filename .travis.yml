@@ -1,12 +1,11 @@
 language: node_js
 node_js:
   - 6
-env:
-  - CI=false
 cache:
   directories:
     - node_modules
 script:
+  - unset CI
   - npm test
   - npm run build
 deploy:
