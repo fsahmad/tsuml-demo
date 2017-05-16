@@ -85,14 +85,16 @@ const PlaygroundTabs = (props: Props) => {
                         hintText={'Enter TypeScript here'}
                         label={'TypeScript'}
                         value={props.code}
-                        onChange={(_, newValue) => { props.onCodeChange(newValue); }} />
+                        onChange={(_, newValue) => { props.onCodeChange(newValue); }}
+                    />
                 </Tab>
                 <Tab icon={<ActionSubject />} label="Diagram Source" value={PlaygroundTabsValues.TAB_DIAGRAM_SOURCE}>
                     <CodeEditor
                         style={styles.content}
                         label={'PlantUML'}
                         readonly={true}
-                        value={props.diagramSource} />
+                        value={props.diagramSource}
+                    />
                 </Tab>
                 <Tab icon={<ImageImage />} label="Diagram" value={PlaygroundTabsValues.TAB_DIAGRAM_IMAGE}>
                     <div style={styles.content}>
