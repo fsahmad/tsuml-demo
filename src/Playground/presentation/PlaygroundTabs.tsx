@@ -24,13 +24,13 @@ interface Props {
 
 const styles = {
     container: {
-        flex: '1 1 auto',
+        flex: '0',
         display: 'flex',
         flexDirection: 'column' as 'column',
     },
     content: {
         // flex: '1 1 auto',
-        width: 'inherit',
+        width: 'calc(100% - 24px)',
         margin: '12px',
         color: '#000',
     },
