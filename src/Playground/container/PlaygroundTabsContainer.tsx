@@ -8,7 +8,7 @@ import { PlaygroundTabsActions } from '../actions';
 
 const mapStateToProps = (state: any) => ({
     value: state.playground.playgroundTabs.value,
-    code: state.playground.playgroundTabs.code,
+    // code: state.playground.playgroundTabs.code,
     diagramSource: state.playground.playgroundTabs.diagramSource,
     diagramImage: state.playground.playgroundTabs.diagramImage,
 });

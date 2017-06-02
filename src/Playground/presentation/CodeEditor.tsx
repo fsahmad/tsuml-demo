@@ -1,3 +1,4 @@
+import debounce = require('lodash/debounce');
 import * as React from 'react';
 import TextField from 'material-ui/TextField';
 
@@ -10,6 +11,11 @@ interface Props {
     hintText?: string;
     label?: string;
     onChange?: (event: object, newValue: string) => void;
+    debounce?: number;
+}
+
+interface State {
+    text: string | undefined;
 }
 
 const hintStyle = {
@@ -29,35 +35,69 @@ const styles = {
     }
 };
 
-const CodeEditor: React.StatelessComponent<Props> = (props) => {
-    return (
-        <TextField
-            hintText={props.hintText}
-            floatingLabelText={props.label}
-            floatingLabelFixed={true}
-            multiLine={true}
-            fullWidth={true}
-            rows={props.rows}
-            rowsMax={props.rowsMax}
-            style={props.style}
-            hintStyle={props.readonly ? styles.hintReadonly : styles.hint}
-            textareaStyle={styles.textarea}
-            disabled={props.readonly}
-            value={props.value}
-            onChange={props.onChange}
-        />
-    );
-};
+class CodeEditor extends React.PureComponent<Props, State> {
 
-CodeEditor.defaultProps = {
-    style: {
+    public static defaultProps = {
+        style: {
 
-    },
-    readonly: false,
-    value: undefined,
-    hintText: undefined,
-    label: undefined,
-    rows: 10,
-};
+        },
+        readonly: false,
+        value: undefined,
+        hintText: undefined,
+        label: undefined,
+        rows: 10,
+        debounce: 500,
+    };
+
+    private _onChangeDebounce: (event: object, newValue: string) => void;
+
+    constructor(props: Props) {
+        super(props);
+
+        this.state = {
+            text: props.value
+        };
+
+        this.onChange = this.onChange.bind(this);
+        this._onChangeDebounce = debounce(
+            (event: object, newValue: string) => {
+                if (this.props.onChange) {
+                    this.props.onChange(event, newValue);
+                }
+            },
+            props.debounce).bind(this);
+    }
+
+    public componentWillReceiveProps() {
+        this.setState({
+            text: this.props.value,
+        });
+    }
+
+    public render() {
+        return (
+            <TextField
+                hintText={this.props.hintText}
+                floatingLabelText={this.props.label}
+                floatingLabelFixed={true}
+                multiLine={true}
+                fullWidth={true}
+                rows={this.props.rows}
+                rowsMax={this.props.rowsMax}
+                style={this.props.style}
+                hintStyle={this.props.readonly ? styles.hintReadonly : styles.hint}
+                textareaStyle={styles.textarea}
+                disabled={this.props.readonly}
+                onChange={this.onChange}
+            />
+        );
+    }
+
+    private onChange(event: any, newValue: string) {
+        this.setState({ text: newValue });
+        this._onChangeDebounce(event, newValue);
+    }
+
+}
 
 export default CodeEditor;
