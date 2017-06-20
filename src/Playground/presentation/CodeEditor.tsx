@@ -68,10 +68,13 @@ class CodeEditor extends React.PureComponent<Props, State> {
             props.debounce).bind(this);
     }
 
-    public componentWillReceiveProps() {
-        this.setState({
-            text: this.props.value,
-        });
+    public componentWillReceiveProps(nextProps: Readonly<Props>) {
+        console.log(nextProps);
+        if (nextProps.hasOwnProperty('value') && this.props.value !== nextProps.value) {
+            this.setState({
+                text: nextProps.value,
+            });
+        }
     }
 
     public render() {
@@ -89,6 +92,7 @@ class CodeEditor extends React.PureComponent<Props, State> {
                 textareaStyle={styles.textarea}
                 disabled={this.props.readonly}
                 onChange={this.onChange}
+                value={this.state.text}
             />
         );
     }
