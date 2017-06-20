@@ -69,7 +69,6 @@ class CodeEditor extends React.PureComponent<Props, State> {
     }
 
     public componentWillReceiveProps(nextProps: Readonly<Props>) {
-        console.log(nextProps);
         if (nextProps.hasOwnProperty('value') && this.props.value !== nextProps.value) {
             this.setState({
                 text: nextProps.value,

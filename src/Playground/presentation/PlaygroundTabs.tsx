@@ -29,7 +29,6 @@ const styles = {
         flexDirection: 'column' as 'column',
     },
     content: {
-        // flex: '1 1 auto',
         width: 'calc(100% - 24px)',
         margin: '12px',
         color: '#000',
@@ -43,35 +42,6 @@ const styles = {
 };
 
 const PlaygroundTabs = (props: Props) => {
-    // let content = null;
-
-    /*switch (props.value) {
-        case PlaygroundTabsValues.TAB_CODE:
-            content = (
-                <CodeEditor
-                    style={styles.content}
-                    hintText={'Enter TypeScript here'}
-                    label={'TypeScript'}
-                    value={props.code}
-                    onChange={(_, newValue) => { props.onCodeChange(newValue); }} />
-            );
-            break;
-        case PlaygroundTabsValues.TAB_DIAGRAM_SOURCE:
-            content = (
-                <CodeEditor
-                    style={styles.content}
-                    label={'PlantUML'}
-                    readonly={true}
-                    value={props.diagramSource} />
-            );
-            break;
-        case PlaygroundTabsValues.TAB_DIAGRAM_IMAGE:
-            content = <div><img src={props.diagramImage} /></div>;
-            break;
-        default:
-            break;
-    }*/
-
     return (
         <div style={styles.container}>
             <Tabs
