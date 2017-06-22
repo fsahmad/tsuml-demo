@@ -4,14 +4,26 @@ import {
     PlaygroundTabs
 } from '../presentation/PlaygroundTabs';
 
+import {
+    diagramUrl,
+    generateDiagram,
+} from '../../logic/index';
+
 import { PlaygroundTabsActions } from '../actions';
 
-const mapStateToProps = (state: any) => ({
-    value: state.playground.playgroundTabs.value,
-    // code: state.playground.playgroundTabs.code,
-    diagramSource: state.playground.playgroundTabs.diagramSource,
-    diagramImage: state.playground.playgroundTabs.diagramImage,
-});
+const mapStateToProps = (state: any) => {
+    let diagramSource = '';
+    let diagramImage = '';
+    if (state.playground.playgroundTabs.code) {
+        diagramSource = generateDiagram(state.playground.playgroundTabs.code);
+        diagramImage = diagramUrl(diagramSource);
+    }
+    return {
+        value: state.playground.playgroundTabs.value,
+        diagramSource: diagramSource,
+        diagramImage: diagramImage,
+    };
+};
 
 const mapDispatchToProps = {
     onChange: PlaygroundTabsActions.changeTab,

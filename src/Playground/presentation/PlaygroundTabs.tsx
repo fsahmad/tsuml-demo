@@ -6,6 +6,7 @@ import ActionSubject from 'material-ui/svg-icons/action/subject';
 import ImageImage from 'material-ui/svg-icons/image/image';
 
 import CodeEditor from './CodeEditor';
+import TypeScriptTab from '../container/TypeScriptTabContainer';
 
 const PlaygroundTabsValues = {
     TAB_CODE: 'code',
@@ -50,12 +51,8 @@ const PlaygroundTabs = (props: Props) => {
                 onChange={props.onChange}
             >
                 <Tab icon={<ActionCode />} label="TypeScript" value={PlaygroundTabsValues.TAB_CODE}>
-                    <CodeEditor
+                    <TypeScriptTab
                         style={styles.content}
-                        hintText={'Enter TypeScript here'}
-                        label={'TypeScript'}
-                        value={props.code}
-                        onChange={(_, newValue) => { props.onCodeChange(newValue); }}
                     />
                 </Tab>
                 <Tab icon={<ActionSubject />} label="Diagram Source" value={PlaygroundTabsValues.TAB_DIAGRAM_SOURCE}>

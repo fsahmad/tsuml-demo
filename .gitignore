@@ -18,3 +18,6 @@ yarn-error.log*
 
 # firebase
 functions/node_modules
+
+# storybook
+storybook-static

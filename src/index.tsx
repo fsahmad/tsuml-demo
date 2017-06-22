@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {
+  applyMiddleware,
   createStore,
   combineReducers,
   compose,
 } from 'redux';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
@@ -24,7 +26,11 @@ const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
 const store = createStore(
   // tslint:disable-next-line:no-any
   reducer,
-  composeEnhancers(),
+  composeEnhancers(
+    applyMiddleware(
+      thunkMiddleware
+    )
+  ),
 );
 
 ReactDOM.render(
