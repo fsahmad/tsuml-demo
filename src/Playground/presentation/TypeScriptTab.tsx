@@ -24,15 +24,17 @@ type Props = StateProps & DispatchProps & OwnProps;
 const TypeScriptTab = (props: Props) => {
     let menuItems = [(
         <MenuItem
+            key={-1}
             value={null}
         />
     )];
 
     menuItems = menuItems.concat(
         PlaygroundTabsActions.samples.map(
-            (value) => {
+            (value, index) => {
                 return (
                     <MenuItem
+                        key={index}
                         value={value.id}
                         primaryText={value.label}
                     />

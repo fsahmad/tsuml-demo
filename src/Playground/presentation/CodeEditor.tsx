@@ -32,7 +32,7 @@ const styles = {
     textarea: {
         fontFamily: 'Roboto Mono, monospace',
         color: '#000',
-        '-webkit-text-fill-color': 'rgba(0, 0, 0, 1.0)'
+        WebkitTextFillColor: 'rgba(0, 0, 0, 1.0)'
     }
 };
 
