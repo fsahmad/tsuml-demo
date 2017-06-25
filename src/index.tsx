@@ -11,9 +11,6 @@ import thunkMiddleware from 'redux-thunk';
 import * as ReactGA from 'react-ga';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 
-// Initialize google analytics
-ReactGA.initialize('UA-101530055-1');
-
 injectTapEventPlugin();
 
 import App from './App';
@@ -37,12 +34,15 @@ const store = createStore(
   ),
 );
 
+// Initialize google analytics
+ReactGA.initialize('UA-101530055-1');
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root') as HTMLElement,
   () => {
-    ReactGA.pageview(window.location.hash);
+    ReactGA.pageview(window.location.pathname);
   }
 );
