@@ -7,6 +7,10 @@ class A implements ISomething {
     protected y: string;
     private _x: number;
 
+    public get x(): number {
+        return this._x;
+    }
+
     public doSomething(a: number, b: number): string {
         return `${a} + ${b} = ${a + b}`;
     }
