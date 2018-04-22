@@ -8,7 +8,7 @@ const MarkGithubIcon = require('mui-icons/octicons/mark-github').default;
 import PlaygroundTabsContainer from './Playground/container/PlaygroundTabsContainer';
 import './App.css';
 
-class App extends React.Component<{}, null> {
+class App extends React.Component<{}, {}> {
   render() {
     return (
       <MuiThemeProvider>

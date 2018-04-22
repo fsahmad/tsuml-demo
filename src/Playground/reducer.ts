@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import {default as playgroundTabs} from './reducer/PlaygroundTabsReducer';
+import { default as playgroundTabs } from './reducer/PlaygroundTabsReducer';
 
 const reducer = combineReducers({
     playgroundTabs

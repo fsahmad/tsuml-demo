@@ -16,7 +16,6 @@ const PlaygroundTabsValues = {
 
 interface Props {
     value: any;
-    code: string;
     diagramSource: string;
     diagramImage: string;
     onChange: (value: any) => void;
@@ -76,4 +75,4 @@ const PlaygroundTabs = (props: Props) => {
 export {
     PlaygroundTabs,
     PlaygroundTabsValues
-}
+};

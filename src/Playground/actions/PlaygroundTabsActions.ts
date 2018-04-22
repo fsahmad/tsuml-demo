@@ -63,7 +63,7 @@ export function selectSample(sample: CodeSample) {
     }
 
     const thunkAction: ThunkAction<
-        Promise<{ type: string; content: string; }>,
+        Promise<{ type: string; content: string; } | { type: string; error: any} >,
         any,
         null
         > = (dispatch: Dispatch<{}>) => {
