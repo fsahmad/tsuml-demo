@@ -9,7 +9,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import * as ReactGA from 'react-ga';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+var injectTapEventPlugin = require('react-tap-event-plugin');
 
 injectTapEventPlugin();
 
