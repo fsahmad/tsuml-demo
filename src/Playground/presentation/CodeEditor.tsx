@@ -1,4 +1,4 @@
-import debounce = require('lodash/debounce');
+import debounce from 'lodash/debounce';
 import * as React from 'react';
 import TextField from 'material-ui/TextField';
 
