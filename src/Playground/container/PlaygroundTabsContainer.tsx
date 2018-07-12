@@ -14,9 +14,13 @@ import { PlaygroundTabsActions } from '../actions';
 const mapStateToProps = (state: any) => {
     let diagramSource = '';
     let diagramImage = '';
-    if (state.playground.playgroundTabs.code) {
-        diagramSource = generateDiagram(state.playground.playgroundTabs.code);
-        diagramImage = diagramUrl(diagramSource);
+    try {
+        if (state.playground.playgroundTabs.code) {
+            diagramSource = generateDiagram(state.playground.playgroundTabs.code);
+            diagramImage = diagramUrl(diagramSource);
+        }
+    } catch (e) {
+        // Catch any error
     }
     return {
         value: state.playground.playgroundTabs.value,
